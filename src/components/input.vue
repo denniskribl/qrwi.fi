@@ -6,7 +6,7 @@
       <hr class="my-4 rgba-white-light">
     </div>
     <div class="row d-flex justify-content-center">
-      <form class="qr-forms" v-animate-on-scroll="'fadeInLeft'">
+      <form class="qr-forms" v-animate-on-scroll="{animation: 'fadeInLeft', position: 1}">
         <div class="grey-text custom-form-inputs justify-content-center col-md-6">
           <div class="custom-input-1">
             <label class="qr-label">1. Type in your SSID</label>
@@ -18,7 +18,7 @@
             </div>
             <mdb-input v-model.lazy="password" label="WIFI Password"
                        small="The password is only processed locally on your computer and never sent anywhere"
-                       type="password" icon="lock" size="lg" outline/>
+                       type="password" icon="lock" size="lg" :disabled="noPassword" outline/>
           </div>
           <mdb-collapse :toggleTag="['a']" :togglers="1" :toggleClass="['']" :toggleText="['› Advanced options']"
                         class="more-options-toggle">
@@ -27,13 +27,18 @@
                 <label>Encryption type:</label><br>
                 <div class="custom-control radio-inline custom-radio custom-control-inline">
                   <input v-model="encryptionType" v-bind:value="'WPA'" checked="checked" type="radio" name="radioInline"
-                         class="custom-control-input" id="defaultInline1">
-                  <label class="custom-control-label" for="defaultInline1">WPA</label>
+                         class="custom-control-input" id="input-wpa">
+                  <label class="custom-control-label" for="input-wpa">WPA</label>
                 </div>
                 <div class="custom-control radio-inline custom-radio custom-control-inline">
                   <input v-model="encryptionType" v-bind:value="'WEP'" type="radio" name="radioInline"
-                         class="custom-control-input" id="defaultInline2">
-                  <label class="custom-control-label" for="defaultInline2">WEP</label>
+                         class="custom-control-input" id="input-wep">
+                  <label class="custom-control-label" for="input-wep">WEP</label>
+                </div>
+                <div class="custom-control radio-inline custom-radio custom-control-inline">
+                  <input v-model="encryptionType" v-bind:value="'nopass'" type="radio" name="radioInline"
+                         class="custom-control-input" id="input-none">
+                  <label class="custom-control-label" for="input-none">No password</label>
                 </div>
               </div>
               <div class="more-options-ssid-hidden">
@@ -98,6 +103,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import { Watch } from 'vue-property-decorator';
 import {
   mdbInput,
   mdbBtn,
@@ -138,6 +144,8 @@ export default class Input extends Vue {
 
   password: string = '';
 
+  noPassword: boolean = false;
+
   encryptionType: string = 'WPA';
 
   qrCode: string = '';
@@ -162,8 +170,14 @@ export default class Input extends Vue {
     this.qrCode = canvas.toDataURL('image/png');
   }
 
+  @Watch('encryptionType')
+  onEncryptionTypeChange(): void {
+    // eslint-disable-next-line no-unused-expressions
+    this.encryptionType === 'nopass' ? this.noPassword = true : this.noPassword = false;
+  }
+
   // helper functions
-  static escapeSpecialChars(str: string) {
+  static escapeSpecialChars(str: string): string {
     return str.replace(/[;\\:,"]/g, '\\$&');
   }
 
