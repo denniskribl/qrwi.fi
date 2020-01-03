@@ -49,3 +49,8 @@ Build prod
 ```bash
 yarn build
 ```
+
+## Credits
+
+This project is heavily inspired by [Evgeni Golovs](https://twitter.com/zhenech) project
+[qifi.org](https://qifi.org)
