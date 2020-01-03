@@ -15,12 +15,14 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import {
   mdbNavbar, mdbNavItem, mdbNavbarNav, mdbNavbarToggler, mdbNavbarBrand,
 } from 'mdbvue';
 
-export default {
-  name: 'navbar',
+@Component({
+  name: 'Navbar',
   components: {
     mdbNavbar,
     mdbNavItem,
@@ -28,5 +30,7 @@ export default {
     mdbNavbarToggler,
     mdbNavbarBrand,
   },
-};
+})
+
+export default class Navbar extends Vue {}
 </script>

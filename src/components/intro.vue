@@ -8,14 +8,19 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import { mdbContainer } from 'mdbvue';
 
-export default {
-  name: 'intro',
+@Component({
+  name: 'Intro',
   components: {
     mdbContainer,
   },
-};
+})
+
+export default class Intro extends Vue {}
+
 </script>
 
 

@@ -26,17 +26,19 @@
 </template>
 
 <script lang="ts">
-import { mdbContainer, animateOnScroll } from 'mdbvue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { mdbContainer } from 'mdbvue';
 
-export default {
-  name: 'about',
+@Component({
+  name: 'About',
   components: {
     mdbContainer,
   },
-  directives: {
-    animateOnScroll,
-  },
-};
+})
+
+export default class About extends Vue {}
+
 </script>
 
 <style scoped>

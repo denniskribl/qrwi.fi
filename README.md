@@ -1,24 +1,51 @@
 # qrwi.fi
 
-## Project setup
-```
-yarn install
-```
+> :key: :unlock: Let your family and friends connect to your wifi the **easy way**
+>
+> https://qrwi.fi
 
-### Compiles and hot-reloads for development
-```
+## About
+
+This project was created for me to gain some experience in frontend tech.  
+Coming from an operations background this may not be your usual web project :grin:
+
+Caution: there might be dragons
+
+## Architecture
+
+This website is hosted in AWS using
+* S3
+* Cloudfront
+* Route53
+* ACM
+
+Everything is written in terraform and can be found
+in [infrastructure/](./infrastructure).
+
+Deployment is made via Github actions and can be found 
+in [.github/workflows/main.yml](./.github/workflows/main.yml).
+
+This project makes great use of
+* :sparkles: typescript w/ vue-class-component
+* :art: mdb
+* :left_right_arrow: vue-slider-component 
+
+## Developer guide
+
+Start development server
+
+```bash
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Lint 
 
-### Lints and fixes files
-```
+```bash
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Build prod
+
+```bash
+yarn build
+```

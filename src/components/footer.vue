@@ -11,19 +11,24 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import {
   mdbFooter, mdbContainer, mdbRow, mdbCol,
 } from 'mdbvue';
 
-export default {
-  name: 'FooterPage',
+@Component({
+  name: 'Footer',
   components: {
     mdbFooter,
     mdbContainer,
     mdbRow,
     mdbCol,
   },
-};
+})
+
+export default class Footer extends Vue {}
+
 </script>
 
 <style scoped>

@@ -1,17 +1,3 @@
-<style>
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
-
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
-  @import "assets/main.css";
-
-  #app {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-  }
-</style>
-
-
 <template>
   <div id="app">
     <navbar/>
@@ -43,6 +29,8 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+@import "assets/main.css";
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

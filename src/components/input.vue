@@ -132,7 +132,6 @@ import {
 })
 
 export default class Input extends Vue {
-
   ssid: string = '';
 
   isSSIDHidden: boolean = false;
