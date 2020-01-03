@@ -6,7 +6,7 @@
       <hr class="my-4 rgba-white-light">
     </div>
     <div class="row d-flex justify-content-center">
-      <form class="qr-forms" v-animate-on-scroll="{animation: 'fadeInLeft', position: 0}">
+      <form class="qr-forms">
         <div class="grey-text custom-form-inputs justify-content-center col-md-6">
           <div class="custom-input-1">
             <label class="qr-label">1. Type in your SSID</label>
@@ -115,7 +115,6 @@ import {
   mdbModalBody,
   mdbModalFooter,
   mdbCollapse,
-  animateOnScroll,
 } from 'mdbvue';
 
 @Component({
@@ -131,9 +130,6 @@ import {
     mdbModalBody,
     mdbModalFooter,
     mdbCollapse,
-  },
-  directives: {
-    animateOnScroll,
   },
 })
 
