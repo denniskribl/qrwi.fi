@@ -26,9 +26,9 @@ Deployment is made via Github actions and can be found
 in [.github/workflows/main.yml](./.github/workflows/main.yml).
 
 This project makes great use of
-* :sparkles: typescript w/ vue-class-component
-* :art: mdb
-* :left_right_arrow: vue-slider-component 
+* :sparkles: [typescript](https://github.com/Microsoft/TypeScript) w/ [vue-class-component](https://github.com/vuejs/vue-class-component)
+* :art: [mdb](https://github.com/mdbootstrap/Vue-Bootstrap-with-Material-Design)
+* :left_right_arrow: [vue-slider-component](https://github.com/NightCatSama/vue-slider-component)
 
 ## Developer guide
 
