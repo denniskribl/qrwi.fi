@@ -132,9 +132,6 @@ import {
 })
 
 export default class Input extends Vue {
-  $refs!: {
-    qrcode: HTMLCanvasElement
-  };
 
   ssid: string = '';
 

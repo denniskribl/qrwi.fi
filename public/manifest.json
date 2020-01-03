@@ -1,0 +1,8 @@
+{
+  "name": "qrwi.fi",
+  "short_name": "qrwi.fi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#2fcc76"
+}
