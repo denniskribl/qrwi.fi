@@ -1,0 +1,32 @@
+html {
+  scroll-behavior: smooth;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: lighter;
+  color: #545454;
+}
+
+.md-form.md-outline input[type="text"]:focus:not([readonly]),
+.md-form.md-outline input[type="password"]:focus:not([readonly]) {
+  border-color: #2fcc76;
+  box-shadow: inset 0 0 0 1px #2fcc76;
+}
+
+.md-form.md-outline input[type="text"]:focus:not([readonly])+label,
+.md-form.md-outline input[type="password"]:focus:not([readonly])+label {
+  color: #2fcc76;
+}
+
+.md-form .prefix.active {
+  color: #2fcc76;
+}
+
+.vue-slider-process {
+  background-color: #2fcc76;
+}
+
+.vue-slider-dot-tooltip-inner {
+  background-color: #2fcc76;
+}
