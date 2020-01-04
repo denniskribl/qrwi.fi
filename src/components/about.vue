@@ -54,4 +54,8 @@ export default class About extends Vue {}
     font-weight: lighter;
     color: #545454;
   }
+
+  .anchor {
+    padding-top: 130px;
+  }
 </style>
