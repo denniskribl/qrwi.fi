@@ -26,7 +26,7 @@ jobs:
 
     - name: do the aws stuff
       uses: chrislennon/action-aws-cli@v1.1
-    - run: bash aws-related-stuff.sh qrwi-fi-src
+    - run: bash .github/workflows/aws-related-stuff.sh qrwi-fi-src
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
