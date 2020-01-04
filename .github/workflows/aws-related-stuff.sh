@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 S3_BUCKET_NAME=$1
-CF_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id,Origin:Origins.Items[0].DomainName}[?contains(Origin,'${S3_BUCKET_NAME}')] | [0] | Id")
+CF_ID=$(aws cloudfront list-distributions --output text --query "DistributionList.Items[].{Id:Id,Origin:Origins.Items[0].DomainName}[?contains(Origin,'${S3_BUCKET_NAME}')] | [0] | Id")
 
 # Sync all files except for service-worker and index
 echo "Uploading files to $S3_BUCKET_NAME..."
@@ -25,7 +25,7 @@ aws s3 cp dist/index.html s3://$S3_BUCKET_NAME/index.html \
   --content-type text/html
 
 # Purge the cloudfront cache
-echo "Purging the cache for CloudFront"
+echo "Purging the cache for CloudFront with ID $CF_ID"
 aws cloudfront create-invalidation \
   --distribution-id $CF_ID \
   --paths "/*"
