@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 S3_BUCKET_NAME=$1
-CF_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id,Origin:Origins.Items[0].DomainName}[?contains(Origin,'${S3_BUCKET_NAME}')] | [0]" | awk '{print $1}')
+CF_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[].{Id:Id,Origin:Origins.Items[0].DomainName}[?contains(Origin,'${S3_BUCKET_NAME}')] | [0] | Id")
 
 # Sync all files except for service-worker and index
 echo "Uploading files to $S3_BUCKET_NAME..."
