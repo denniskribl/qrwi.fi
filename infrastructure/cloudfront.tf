@@ -22,6 +22,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     allowed_methods  = ["HEAD", "GET"]
     cached_methods   = ["HEAD", "GET"]
     target_origin_id = aws_s3_bucket.this.id
+    compress         = true
 
     forwarded_values {
       query_string = true
