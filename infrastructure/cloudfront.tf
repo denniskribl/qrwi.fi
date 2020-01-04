@@ -23,6 +23,27 @@ resource "aws_cloudfront_distribution" "cdn" {
     cached_methods   = ["HEAD", "GET"]
     target_origin_id = aws_s3_bucket.this.id
     compress         = true
+    default_ttl      = 31622400
+
+    forwarded_values {
+      query_string = true
+
+      cookies {
+        forward = "none"
+      }
+    }
+    viewer_protocol_policy = "redirect-to-https"
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "index.html"
+    allowed_methods  = ["HEAD", "GET"]
+    cached_methods   = ["HEAD", "GET"]
+    target_origin_id = aws_s3_bucket.this.id
+    compress         = true
+    min_ttl          = 0
+    max_ttl          = 0
+    default_ttl      = 0
 
     forwarded_values {
       query_string = true
