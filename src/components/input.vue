@@ -145,7 +145,7 @@ export default class Input extends Vue {
 
   qrCode: string = '';
 
-  qrCodeSize: Array<string> = ['small', 'medium', 'large'];
+  qrCodeSize: string[] = ['small', 'medium', 'large'];
 
   qrCodeSizeSelected: string = 'small';
 
