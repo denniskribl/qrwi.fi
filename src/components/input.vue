@@ -66,14 +66,14 @@
           </mdb-collapse>
         </div>
         <div class="text-center">
-          <mdb-btn type="button" outline="success" @click.native="openModal">
+          <mdb-btn type="button" outline="success" @click.native="showModal = true">
             <mdb-icon far icon="paper-plane" class="ml-1"/>
             Generate
           </mdb-btn>
         </div>
       </form>
     </div>
-    <mdb-modal size="lg" :show="showModal" @close="closeModal">
+    <mdb-modal size="lg" v-show="showModal" @close="showModal = false">
       <mdb-modal-header>
         <mdb-modal-title tag="h4" bold>Generated QR Code</mdb-modal-title>
       </mdb-modal-header>
@@ -81,7 +81,6 @@
         <div class="text-center mt-4">
           <qriously
             ref="qr-code"
-            v-if=isModalActiveHelper
             :value="this.buildQRString()"
             :size="this.namedQRCodeSizeToNumber()"/>
         </div>
@@ -152,8 +151,6 @@ export default class Input extends Vue {
 
   showModal: boolean = false;
 
-  isModalActiveHelper: boolean = false;
-
   // eslint-disable-next-line max-len
   buildQRString(): string {
     // as in https://github.com/zxing/zxing/wiki/Barcode-Contents#wi-fi-network-config-android-ios-11
@@ -187,22 +184,6 @@ export default class Input extends Vue {
       large: 600,
     };
     return lookupTable[this.qrCodeSizeSelected];
-  }
-
-  // modal helper
-  closeModal(): void {
-    this.showModal = false;
-    this.isModalActiveHelper = false;
-  }
-
-  openModal(): void {
-    this.showModal = true;
-    // hacky workaround - i am not experienced enough to get why the modal was being
-    // re-rendered when opened so i did it the old school way
-    // "what ever floats the boat" right :grin:?
-    setTimeout(() => {
-      this.isModalActiveHelper = true;
-    }, 10);
   }
 }
 </script>
