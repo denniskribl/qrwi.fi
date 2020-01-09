@@ -165,8 +165,7 @@ export default class Input extends Vue {
 
   @Watch('encryptionType')
   onEncryptionTypeChange(): void {
-    // eslint-disable-next-line no-unused-expressions
-    this.encryptionType === 'nopass' ? this.noPassword = true : this.noPassword = false;
+    this.noPassword = this.encryptionType === 'nopass';
   }
 
   // helper functions
