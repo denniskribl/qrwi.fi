@@ -3,7 +3,12 @@
     <mdb-container class="text-center">
       <mdb-row>
         <mdb-col sm="12" class="footer-notice">
-          Made with ♥ by <a href="https://twitter.com/denniskrb_"><strong>Dennis Kribl</strong></a>
+          Made with ♥ by <strong>Dennis Kribl</strong>
+        </mdb-col>
+        <mdb-col sm="12" class="footer-notice">
+          <a href="https://github.com/denniskribl/qrwi.fi"><mdb-icon fab icon="github" class="plug"/></a>
+          <a href="https://twitter.com/denniskrb_"><mdb-icon fab icon="twitter" class="plug"/></a>
+          <a href="https://www.linkedin.com/in/dennis-kribl-721339162/"><mdb-icon fab icon="linkedin" class="plug"/></a>
         </mdb-col>
       </mdb-row>
     </mdb-container>
@@ -14,7 +19,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import {
-  mdbFooter, mdbContainer, mdbRow, mdbCol,
+  mdbFooter, mdbContainer, mdbRow, mdbCol, mdbIcon,
 } from 'mdbvue';
 
 @Component({
@@ -24,6 +29,7 @@ import {
     mdbContainer,
     mdbRow,
     mdbCol,
+    mdbIcon,
   },
 })
 
@@ -32,6 +38,10 @@ export default class Footer extends Vue {}
 </script>
 
 <style scoped>
+  .plug {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
   .footer-notice {
     margin-bottom: .8rem;
   }
