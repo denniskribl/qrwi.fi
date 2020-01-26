@@ -8,6 +8,7 @@
         <mdb-navbar-nav right>
           <mdb-nav-item href="#generate">QR-Code</mdb-nav-item>
           <mdb-nav-item href="#about">About</mdb-nav-item>
+          <mdb-nav-item href="#privacy">Privacy</mdb-nav-item>
         </mdb-navbar-nav>
       </mdb-navbar-toggler>
     </mdb-navbar>

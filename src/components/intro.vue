@@ -3,10 +3,8 @@
     <div class="main text-center animated fadeInRight slow">
       <h2>Let your family and friends connect to your wifi <br>
         <b>the easy way</b></h2><br>
-        <div class="get-started-div text-center animated pulse delay-2s">
-            <mdb-icon fas icon="angle-down" class="angle-down"/>
-              <b><a class="get-started" href="#generate">GET STARTED</a></b>
-            <mdb-icon fas icon="angle-down" class="angle-down"/>
+        <div class="get-started-div text-center animated infinite pulse delay-2s">
+            <a class="get-started" href="#generate">GET STARTED</a>
         </div>
     </div>
   </mdb-container>
@@ -32,12 +30,16 @@ export default class Intro extends Vue {}
 
 <style scoped>
   .get-started-div {
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   .get-started {
     font-size: 1.5rem;
-    color: #545454;
+    color: #28a745;
+  }
+
+  .get-started:hover {
+    cursor: pointer;
   }
 
   i {

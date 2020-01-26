@@ -48,7 +48,7 @@
                   <label class="custom-control-label" for="ssidHiddenCheckbox">Hidden?</label>
                 </div>
                 <div class="more-options-qr-code-size">
-                  <label class="text-grey">QR Code Size:</label>
+                  <label class="text-grey">QR Code Size:</label><br>
                   <vue-slider
                     id="qrCodeSizeSlider"
                     :tooltip="'none'"
@@ -60,6 +60,15 @@
                     v-model="qrCodeSizeSelected"/>
                   <label for="qrCodeSizeSlider" class="text-grey">{{qrCodeSizeSelected.charAt(0).toUpperCase() +
                     qrCodeSizeSelected.slice(1)}}</label>
+                </div>
+                <div class="more-options-custom-logo">
+                  <label class="text-grey custom-logo-label">Custom Logo:</label>
+                  <mdb-input v-model="logoURL" label="URL" id="logoInput"
+                             @focus="showLogoValidation=true"
+                             class="custom-logo-input" type="text" outline/>
+                  <label for="logoInput" class="text-grey">
+                    {{ !this.logoURL.startsWith('http') && this.showLogoValidation ? 'Full path to an external url' : '' }}
+                  </label>
                 </div>
               </div>
             </div>
@@ -79,17 +88,26 @@
       </mdb-modal-header>
       <mdb-modal-body>
         <div class="text-center mt-4">
-          <qriously
-            ref="qr-code"
-            :value="this.buildQRString()"
-            :size="this.namedQRCodeSizeToNumber()"/>
+            <vue-qr
+              ref="qr-code"
+              :text="this.buildQRString()"
+              :size="this.namedQRCodeSizeToNumber()"
+              :margin="0"
+              :correctLevel="3"
+              :dot-scale="0.3"
+              :logoSrc="this.logoURL === '' ? require('@/assets/logo-short.png') : this.logoURL"
+              :logoScale="0.25"
+              :logoMargin="3"
+              :backgroundColor="this.bgColor"
+              colorLight="rgb(47, 204, 118, .25)"
+              :callback="this.saveCodeCallback"
+            />
         </div>
       </mdb-modal-body>
       <mdb-modal-footer center>
         <a
           download="qrwi-fi.png"
           :href="qrCode"
-          @click="saveCode('qr-code')"
           class="btn btn-success btn-outline-success">
           <mdb-icon icon="save"/>
           Download
@@ -101,6 +119,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import VueQr from 'vue-qr';
 import Component from 'vue-class-component';
 import { Watch } from 'vue-property-decorator';
 import {
@@ -129,6 +148,7 @@ import {
     mdbModalBody,
     mdbModalFooter,
     mdbCollapse,
+    VueQr,
   },
 })
 
@@ -149,6 +169,12 @@ export default class Input extends Vue {
 
   qrCodeSizeSelected: string = 'small';
 
+  logoURL: string = '';
+
+  showLogoValidation: boolean = false;
+
+  bgColor: string = 'rgb(67,160,71)';
+
   showModal: boolean = false;
 
   // eslint-disable-next-line max-len
@@ -157,15 +183,13 @@ export default class Input extends Vue {
     return `WIFI:S:${Input.escapeSpecialChars(this.ssid)};T:${this.encryptionType};P:${Input.escapeSpecialChars(this.password)};${this.isSSIDHidden ? 'H:true' : ''};`;
   }
 
-  saveCode(ref: string): void {
-    const component = (this as any).$refs[ref];
-    const canvas = component.$refs.qrcode;
-    this.qrCode = canvas.toDataURL('image/png');
-  }
-
   @Watch('encryptionType')
   onEncryptionTypeChange(): void {
     this.noPassword = this.encryptionType === 'nopass';
+  }
+
+  saveCodeCallback(url: string) {
+    this.qrCode = url;
   }
 
   // helper functions
@@ -200,6 +224,10 @@ export default class Input extends Vue {
     margin-right: .2rem;
   }
 
+  .more-options-custom-logo {
+    margin-top: 1rem;
+  }
+
   .more-options-toggle {
     margin-left: 2.2rem;
     margin-bottom: 2rem;
@@ -209,8 +237,16 @@ export default class Input extends Vue {
     margin-top: 2rem;
   }
 
+  .custom-logo-input {
+    margin: 0;
+  }
+
+  .custom-logo-label {
+    margin-bottom: .5em;
+  }
+
   .qr-input {
-    margin-bottom: 15rem;
+    margin-bottom: 13rem;
   }
 
   .custom-input-1 {

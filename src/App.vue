@@ -4,6 +4,7 @@
     <intro/>
     <wifi-inputs/>
     <about/>
+    <privacy/>
     <qrfooter/>
   </div>
 </template>
@@ -14,6 +15,7 @@ import navbar from './components/navbar.vue';
 import wifiInputs from './components/input.vue';
 import intro from './components/intro.vue';
 import about from './components/about.vue';
+import privacy from './components/privacy.vue';
 import qrfooter from './components/footer.vue';
 
 @Component({
@@ -22,6 +24,7 @@ import qrfooter from './components/footer.vue';
     intro,
     wifiInputs,
     about,
+    privacy,
     qrfooter,
   },
 })

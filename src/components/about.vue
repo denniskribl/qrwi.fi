@@ -45,7 +45,7 @@ export default class About extends Vue {}
   .about-text {
     font-size: 1.2rem;
     margin-top: 2rem;
-    margin-bottom: 24rem;
+    margin-bottom: 15rem;
     max-width: 730px;
   }
 

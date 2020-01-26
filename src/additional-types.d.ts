@@ -1,2 +1,3 @@
 declare module 'mdbvue';
-declare module 'vue-qriously';
+declare module 'verte';
+declare module 'vue-qr';

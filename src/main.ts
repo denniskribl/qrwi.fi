@@ -5,13 +5,11 @@ import 'vue-slider-component/theme/default.css';
 
 import Vue from 'vue';
 
-import VueQriously from 'vue-qriously';
 import VueSlider from 'vue-slider-component';
 import App from './App.vue';
 
 import './registerServiceWorker';
 
-Vue.use(VueQriously);
 Vue.component('VueSlider', VueSlider);
 
 Vue.config.productionTip = false;
