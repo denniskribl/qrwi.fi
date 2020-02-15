@@ -95,11 +95,10 @@
               :margin="0"
               :correctLevel="3"
               :dot-scale="0.3"
-              :logoSrc="this.logoURL === '' ? require('@/assets/logo-short.png') : this.logoURL"
+              :logoSrc="this.logoURL"
               :logoScale="0.25"
               :logoMargin="3"
-              :backgroundColor="this.bgColor"
-              colorLight="rgb(47, 204, 118, .25)"
+
               :callback="this.saveCodeCallback"
             />
         </div>
